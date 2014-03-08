@@ -1,0 +1,16 @@
+source 'https://rubygems.org'
+
+gem 'rails', '4.0.3'
+
+gem 'pg', '0.17.1'
+
+gem 'sass-rails', '4.0.1'
+gem 'bootstrap-sass', '3.1.1'
+
+gem 'countries', '0.9.3'
+gem 'country_select', '1.3.1'
+gem 'geoip', '1.3.5'
+
+gem 'jquery-rails', '3.1.0'
+
+gem 'rails_12factor', '0.0.2', group: :production
