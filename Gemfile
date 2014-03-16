@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.0.3'
+gem 'rails', '4.0.4'
 
 gem 'pg', '0.17.1'
 
-gem 'sass-rails', '4.0.1'
+gem 'sass-rails', '4.0.2'
 gem 'bootstrap-sass', '3.1.1'
 
 gem 'countries', '0.9.3'
