@@ -1,5 +1,7 @@
 class VisaSourcesController < ApplicationController
 
+  force_ssl if Rails.env.production?
+
   def view
 
   end
