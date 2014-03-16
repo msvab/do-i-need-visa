@@ -5,42 +5,57 @@
 <section class="narrow">
     <button id="add-new" class="btn btn-default">Add New</button>
 
-    <div class="hidden">
-        <%= form_tag({:action => :add }, {method: :post, class: 'padding-top', role: 'form'}) do %>
+    <div
+    <% if flash[:error].nil? %> class="hidden"
+    <% end %> >
+        <% unless flash[:error].nil? %>
+            <% for i in flash[:error] %>
+                <div class="alert alert-danger">
+                    <%= i[1].first %>
+                </div>
+            <% end %>
+        <% end %>
+
+        <%= form_tag({:action => :add}, {method: :post, class: 'padding-top', role: 'form'}) do %>
             <div class="row">
                 <label class="col-md-4">Name</label>
+
                 <div class="col-md-8">
-                    <%= text_field :source, :name, {class: 'form-control'} %>
+                    <%= text_field :visa_source, :name, {class: 'form-control'} %>
                 </div>
             </div>
             <div class="row">
                 <label class="col-md-4">Country</label>
+
                 <div class="col-md-8">
-                    <%= country_select :source, :country, nil, {iso_codes: true}, {class: 'form-control'} %>
+                    <%= country_select :visa_source, :country, nil, {iso_codes: true}, {class: 'form-control'} %>
                 </div>
             </div>
             <div class="row">
                 <label class="col-md-4">URL</label>
+
                 <div class="col-md-8">
-                    <%= url_field :source, :url, {class: 'form-control'} %>
+                    <%= url_field :visa_source, :url, {class: 'form-control'} %>
                 </div>
             </div>
             <div class="row">
                 <label class="col-md-4">Last Modified</label>
+
                 <div class="col-md-8">
-                    <%= datetime_local_field :source, :last_modified, {class: 'form-control'} %>
+                    <%= datetime_local_field :visa_source, :last_modified, {class: 'form-control'} %>
                 </div>
             </div>
             <div class="row">
                 <label class="col-md-4">Etag</label>
+
                 <div class="col-md-8">
-                    <%= text_field :source, :etag, {class: 'form-control'} %>
+                    <%= text_field :visa_source, :etag, {class: 'form-control'} %>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <label class="checkbox">
-                        <%= check_box :source, :visa_required %>
+                        <%= check_box :visa_source, :visa_required %>
                         Visa required
                     </label>
                 </div>
@@ -48,7 +63,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <label class="checkbox">
-                        <%= check_box :source, :on_arrival %>
+                        <%= check_box :visa_source, :on_arrival %>
                         Visa on arrival
                     </label>
                 </div>
@@ -58,7 +73,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <%= text_area :source, :description, {class: 'form-control'} %>
+                    <%= text_area :visa_source, :description, {class: 'form-control'} %>
                 </div>
             </div>
             <div class="row">
@@ -70,27 +85,33 @@
     </div>
 </section>
 
+
+<h2>Existing sources</h2>
 <% if VisaSource.all.size > 0 %>
-    <table>
-        <thead>
+    <div class="panel panel-default">
+        <table class="table">
+            <thead>
             <tr>
                 <th>Name</th>
                 <th>Country</th>
                 <th>Updated</th>
                 <th>Countries</th>
+                <th></th>
             </tr>
-        </thead>
-        <tbody>
+            </thead>
+            <tbody>
             <% VisaSource.all.each { |source| %>
                 <tr>
-                    <td><%=	source.name %></td>
-                    <td><%=	Country.find_country_by_alpha2(source.country) %></td>
-                    <td><%=	source.updated? %></td>
-                    <td><%=	source.visas.size %></td>
+                    <td><%= source.name %></td>
+                    <td><%= Country.find_country_by_alpha2(source.country) %></td>
+                    <td><%= source.updated? %></td>
+                    <td><%= source.visas.size %></td>
+                    <td><a class="btn" href="/admin/sources/<%= source.id %>/delete">Delete</a></td>
                 </tr>
             <% } %>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
+    </div>
 <% end %>
 
 <%= javascript_include_tag 'admin' %>

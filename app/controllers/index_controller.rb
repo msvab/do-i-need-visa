@@ -8,7 +8,7 @@ class IndexController < ApplicationController
     @visa = find_visa(params[:visa])
 
     @searched = true
-    render 'index'
+    render :index
   end
 
   private

@@ -6,6 +6,7 @@ DoINeedVisa::Application.routes.draw do
 
   get 'admin/sources' => 'visa_sources#view'
   post 'admin/sources' => 'visa_sources#add'
+  get 'admin/sources/:id/delete' => 'visa_sources#delete'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
