@@ -6,14 +6,14 @@
     <button id="add-new" class="btn btn-default">Add New</button>
 
     <div
-    <% if flash[:error].nil? %> class="hidden"
+    <% if flash[:errors].nil? %> class="hidden"
     <% end %> >
-        <% unless flash[:error].nil? %>
-            <% for i in flash[:error] %>
-                <div class="alert alert-danger">
-                    <%= i[1].first %>
-                </div>
-            <% end %>
+        <% unless flash[:errors].nil? %>
+            <div class="alert alert-danger">
+                <% for i in flash[:errors] %>
+                    <%= i[0].to_s + ': ' + i[1].first %><br/>
+                <% end %>
+            </div>
         <% end %>
 
         <%= form_tag({:action => :add}, {method: :post, class: 'padding-top', role: 'form'}) do %>
