@@ -12,6 +12,8 @@ class VisaSourcesController < ApplicationController
     source = VisaSource.create(source_params)
     if source.invalid?
       flash[:errors] = source.errors.messages
+    else
+      flash.delete(:errors)
     end
     render :view
   end
