@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.4'
 gem 'rack-ssl', '1.3.3'
+gem 'clearance', '1.3.0'
 
 gem 'pg', '0.17.1'
 

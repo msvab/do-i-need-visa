@@ -2,6 +2,8 @@ class VisaSourcesController < ApplicationController
 
   force_ssl if Rails.env.production?
 
+  before_filter :authorize
+
   def view
 
   end
