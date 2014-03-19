@@ -1,0 +1,32 @@
+<% require 'countries' %>
+
+<h1>Visa Sources</h1>
+
+<%= link_to 'Add New', { controller: 'visa_sources', action: 'new' }, class: 'btn btn-default' %>
+
+<% if VisaSource.all.size > 0 %>
+    <div class="panel panel-default mt">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Country</th>
+                <th>Updated</th>
+                <th>Countries</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% VisaSource.all.each { |source| %>
+                <tr>
+                    <td><%= link_to source.name, edit_visa_source_path(source) %></td>
+                    <td><%= Country.find_country_by_alpha2(source.country) %></td>
+                    <td><%= source.updated? %></td>
+                    <td><%= source.visas.size %></td>
+                    <td><%= link_to 'Delete', visa_source_path(source), method: :delete %></td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+    </div>
+<% end %>

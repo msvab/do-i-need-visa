@@ -4,24 +4,43 @@ class VisaSourcesController < ApplicationController
 
   before_filter :authorize
 
-  def view
+  def index
 
   end
 
-  def add
-    source = VisaSource.create(source_params)
-    if source.invalid?
-      flash[:errors] = source.errors.messages
+  def new
+    @visa_source = VisaSource.new
+  end
+
+  def edit
+    @visa_source = VisaSource.find(params[:id])
+  end
+
+  def create
+    @visa_source = VisaSource.create(source_params)
+    if @visa_source.invalid?
+      flash[:errors] = @visa_source.errors.messages
+      render :new
     else
-      flash.delete(:errors)
+      redirect_to action: :index
     end
-    render :view
   end
 
-  def delete
+  def update
+    @visa_source = VisaSource.find(params['id'])
+    @visa_source.update(source_params)
+    if @visa_source.invalid?
+      flash[:errors] = @visa_source.errors.messages
+      render :edit
+    else
+      redirect_to action: :index
+    end
+  end
+
+  def destroy
     to_delete = VisaSource.find(params['id'])
     to_delete.delete unless to_delete.visas.size > 0
-    redirect_to action: :view
+    redirect_to action: :index
   end
 
   private

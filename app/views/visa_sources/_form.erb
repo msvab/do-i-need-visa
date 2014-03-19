@@ -1,0 +1,64 @@
+<div class="form-group <%= raw('has-error has-feedback') unless src.errors[:name].empty? %>">
+    <label class="col-md-3 control-label">Name</label>
+
+    <div class="col-md-8 controls">
+        <%= form.text_field :name, {class: 'form-control'} %>
+    </div>
+</div>
+<div class="form-group <%= raw('has-error has-feedback') unless src.errors[:country].empty? %>">
+    <label class="col-md-3 control-label">Country</label>
+
+    <div class="col-md-8 controls">
+        <%= form.country_select :country, nil, {iso_codes: true}, {class: 'form-control'} %>
+    </div>
+</div>
+<div class="form-group <%= raw('has-error has-feedback') unless src.errors[:url].empty? %>">
+    <label class="col-md-3 control-label">URL</label>
+
+    <div class="col-md-8 controls">
+        <%= form.url_field :url, {class: 'form-control'} %>
+    </div>
+</div>
+<div class="form-group <%= raw('has-error has-feedback') unless src.errors[:last_modified].empty? %>">
+    <label class="col-md-3 control-label">Last Modified</label>
+
+    <div class="col-md-8 controls">
+        <%= form.datetime_local_field :last_modified, {class: 'form-control'} %>
+    </div>
+</div>
+<div class="form-group <%= raw('has-error has-feedback') unless src.errors[:etag].empty? %>">
+    <label class="col-md-3 control-label">Etag</label>
+
+    <div class="col-md-8 controls">
+        <%= form.text_field :etag, {class: 'form-control'} %>
+    </div>
+</div>
+<div class="form-group <%= raw('has-error has-feedback') unless src.errors[:visa_required].empty? %>">
+    <div class="col-md-offset-3 col-md-8">
+        <label class="checkbox">
+            <%= form.check_box :visa_required %>
+            Visa required
+        </label>
+    </div>
+</div>
+<div class="form-group <%= raw('has-error has-feedback') unless src.errors[:on_arrival].empty? %>">
+    <div class="col-md-offset-3 col-md-8">
+        <label class="checkbox">
+            <%= form.check_box :on_arrival %>
+            Visa on arrival
+        </label>
+    </div>
+</div>
+<div class="form-group <%= raw('has-error has-feedback') unless src.errors[:description].empty? %>">
+    <label class="col-md-3 control-label">Description</label>
+
+    <div class="col-md-8">
+        <%= form.text_area :description, {class: 'form-control', rows: '10'} %>
+    </div>
+</div>
+<div class="form-group mt">
+    <div class="col-md-offset-3 col-md-8">
+        <button type="submit" class="btn btn-primary"><%= btn_label %></button>
+        <%= link_to 'Back to Sources', {controller: 'visa_sources', action: 'index'}, {class: 'btn btn-default', role: 'button'} %>
+    </div>
+</div>

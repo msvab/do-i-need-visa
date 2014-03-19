@@ -1,0 +1,7 @@
+<h1>Create New Visa Source</h1>
+
+<div class="narrow">
+    <%=	form_for(@visa_source, html: {role: 'form', class: 'form-horizontal'}) do |form| %>
+        <%= render partial: 'form', locals: {form: form, src: @visa_source, btn_label: 'Create Source'} %>
+    <% end %>
+</div>

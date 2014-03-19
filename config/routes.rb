@@ -4,8 +4,8 @@ DoINeedVisa::Application.routes.draw do
 
   post '/' => 'index#search'
 
-  get 'admin/sources' => 'visa_sources#view'
-  post 'admin/sources' => 'visa_sources#add'
-  get 'admin/sources/:id/delete' => 'visa_sources#delete'
+  scope '/admin' do
+    resources :visa_sources
+  end
 
 end
