@@ -1,0 +1,22 @@
+@import "bootstrap";
+@import "bootstrap/theme";
+
+.hidden {
+  display: none;
+}
+
+.narrow {
+  max-width: 800px;
+}
+
+.pt {
+  padding-top: 1em;
+}
+
+.mt {
+  margin-top: 1em;
+}
+
+td {
+  vertical-align: middle;
+}

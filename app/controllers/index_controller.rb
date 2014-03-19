@@ -1,5 +1,7 @@
 class IndexController < ApplicationController
 
+  layout 'public'
+
   def index
     @visa = Visa.new(citizen: request_country(request.remote_ip))
   end
