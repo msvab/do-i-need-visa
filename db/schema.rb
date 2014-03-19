@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 20140317002639) do
 
   create_table "visas", force: true do |t|
     t.string   "citizen",        limit: 2, null: false
-    t.string   "country",        limit: 2, null: false
     t.integer  "visa_source_id"
     t.datetime "created_at"
     t.datetime "updated_at"
