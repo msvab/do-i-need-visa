@@ -1,7 +1,5 @@
 class VisaSourcesController < ApplicationController
 
-  layout 'admin'
-
   force_ssl if Rails.env.production?
 
   before_filter :authorize
@@ -35,6 +33,7 @@ class VisaSourcesController < ApplicationController
       flash[:errors] = @visa_source.errors.messages
       render :edit
     else
+      @visa_source.visa_codes = params['visa_source']['visa_codes'].select {|code| !code.blank?}
       redirect_to action: :index
     end
   end

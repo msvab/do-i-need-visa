@@ -1,7 +1,7 @@
 <h1>Update Visa Source</h1>
 
 <div class="narrow">
-    <%=	form_for(@visa_source, html: {role: 'form', class: 'form-horizontal'}) do |form| %>
+    <%=	form_for(@visa_source, html: {role: 'form', class: 'form-horizontal', autofill: 'off'}) do |form| %>
         <%= render partial: 'form', locals: {form: form, src: @visa_source, btn_label: 'Update Source'} %>
     <% end %>
 </div>

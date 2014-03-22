@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require bootstrap-select
+//= require bootstrap-multiselect
 
 $(function() {
     $('.selectpicker').selectpicker();

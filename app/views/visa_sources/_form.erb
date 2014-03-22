@@ -49,6 +49,13 @@
         </label>
     </div>
 </div>
+<div class="form-group">
+    <label class="col-md-3 control-label">Applies to citizens of</label>
+
+    <div class="col-md-8 controls">
+        <%= form.select :visa_codes, Country.all.sort_by { |elem| elem[0] }, {}, {multiple: true, class: 'selectpicker', data: {live_search: 'true', width: '100%'}} %>
+    </div>
+</div>
 <div class="form-group <%= raw('has-error has-feedback') unless src.errors[:description].empty? %>">
     <label class="col-md-3 control-label">Description</label>
 

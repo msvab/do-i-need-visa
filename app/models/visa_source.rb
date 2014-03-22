@@ -8,6 +8,22 @@ class VisaSource < ActiveRecord::Base
 
   validate :etag_or_date_presence
 
+  def visa_codes
+    visas.collect { |visa| visa.citizen }
+  end
+
+  def visa_codes=(codes)
+    visas.where.not(citizen: codes).delete_all
+    codes_to_create = codes.select {|code|
+      found_visas = visas.select {|visa| visa.citizen == code}
+      found_visas.empty?
+    }
+    codes_to_create.each { |code|
+      visas << Visa.new(citizen: code, visa_source: self)
+    }
+    save
+  end
+
   private
 
   def etag_or_date_presence
