@@ -9,7 +9,7 @@
     <label class="col-md-3 control-label">Country</label>
 
     <div class="col-md-8 controls">
-        <%= form.country_select :country, nil, {iso_codes: true}, {class: 'form-control'} %>
+        <%= form.country_select :country, nil, {iso_codes: true}, {class: 'selectpicker', data: {live_search: 'true', width: '100%'}} %>
     </div>
 </div>
 <div class="form-group <%= raw('has-error has-feedback') unless src.errors[:url].empty? %>">

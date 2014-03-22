@@ -20,3 +20,12 @@
 td {
   vertical-align: middle;
 }
+
+.dropdown-menu {
+  .selectpicker {
+    position: relative;
+  }
+  .glyphicon {
+    display: none;
+  }
+}
