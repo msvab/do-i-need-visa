@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.1.0'
+
 gem 'rails', '4.0.4'
 gem 'rack-ssl', '1.4.1'
 gem 'clearance', '1.3.0'
