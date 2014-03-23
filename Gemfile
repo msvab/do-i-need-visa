@@ -11,6 +11,7 @@ gem 'seed_dump', '3.1.0'
 
 gem 'sass-rails', '4.0.2'
 gem 'bootstrap-sass', '3.1.1'
+gem 'sprockets_better_errors', '0.0.4'
 
 gem 'countries', '0.9.3'
 gem 'country_select', '1.3.1'
