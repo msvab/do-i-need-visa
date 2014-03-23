@@ -1,5 +1,6 @@
 @import "bootstrap";
 @import "bootstrap/theme";
+@import "bootstrap-chosen";
 
 .hidden {
   display: none;
@@ -21,11 +22,7 @@ td {
   vertical-align: middle;
 }
 
-.dropdown-menu {
-  .selectpicker {
-    position: relative;
-  }
-  .glyphicon {
-    display: none;
-  }
+.chosen-container-multi .chosen-choices,
+.chosen-container-single .chosen-single {
+  border-radius: 4px;
 }
