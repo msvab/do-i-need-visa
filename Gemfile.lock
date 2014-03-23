@@ -58,7 +58,7 @@ GEM
     pg (0.17.1)
     polyglot (0.3.4)
     rack (1.5.2)
-    rack-ssl (1.4.0)
+    rack-ssl (1.4.1)
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -119,7 +119,7 @@ DEPENDENCIES
   geoip (= 1.3.5)
   jquery-rails (= 3.1.0)
   pg (= 0.17.1)
-  rack-ssl (= 1.4.0)
+  rack-ssl (= 1.4.1)
   rails (= 4.0.4)
   rails_12factor (= 0.0.2)
   sass-rails (= 4.0.2)
