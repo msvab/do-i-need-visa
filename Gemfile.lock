@@ -121,6 +121,6 @@ DEPENDENCIES
   pg (= 0.17.1)
   rack-ssl (= 1.4.1)
   rails (= 4.0.4)
-  rails_12factor (= 0.0.2)
+  rails_12factor
   sass-rails (= 4.0.2)
   seed_dump (= 3.1.0)

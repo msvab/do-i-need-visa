@@ -18,4 +18,4 @@ gem 'geoip', '1.3.5'
 
 gem 'jquery-rails', '3.1.0'
 
-gem 'rails_12factor', '0.0.2', group: :production
+gem 'rails_12factor', group: :production
