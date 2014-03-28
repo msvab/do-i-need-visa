@@ -16,7 +16,7 @@ gem 'sprockets_better_errors', '0.0.4', group: :development
 
 gem 'countries', '0.9.3'
 gem 'country_select', '1.3.1'
-gem 'geoip', '1.3.5'
+gem 'geoip', '1.4.0'
 
 gem 'jquery-rails', '3.1.0'
 
