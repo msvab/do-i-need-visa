@@ -12,7 +12,6 @@ gem 'seed_dump', '3.1.0'
 gem 'sass-rails', '4.0.3'
 gem 'bootstrap-sass', '3.1.1'
 gem 'uglifier', '2.5.0'
-gem 'sprockets_better_errors', '0.0.4', group: :development
 
 gem 'countries', '0.9.3'
 gem 'country_select', '1.3.1'
