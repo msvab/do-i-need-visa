@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'rails', '4.1.1'
+gem 'rails', '4.1.2'
 gem 'rack-ssl', '1.4.1'
 gem 'clearance', '1.3.0'
 
@@ -10,13 +10,13 @@ gem 'pg', '0.17.1'
 gem 'seed_dump', '3.1.0'
 
 gem 'sass-rails', '4.0.3'
-gem 'bootstrap-sass', '3.1.1.1'
-gem 'uglifier', '2.5.0'
+gem 'bootstrap-sass', '3.2.0.0'
+gem 'uglifier', '2.5.1'
 
 gem 'countries', '0.9.3'
 gem 'country_select', '1.3.1'
 gem 'geoip', '1.4.0'
 
-gem 'jquery-rails', '3.1.0'
+gem 'jquery-rails', '3.1.1'
 
 gem 'rails_12factor', '0.0.2', group: :production
