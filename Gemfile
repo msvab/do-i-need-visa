@@ -30,4 +30,5 @@ end
 
 group :test do
   gem 'capybara', '2.4.1'
+  gem 'faker', '1.4.2'
 end
