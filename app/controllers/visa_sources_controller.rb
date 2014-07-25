@@ -40,7 +40,7 @@ class VisaSourcesController < ApplicationController
 
   def destroy
     to_delete = VisaSource.find(params['id'])
-    to_delete.delete unless to_delete.visas.size > 0
+    to_delete.destroy unless to_delete.visas.size > 0
     redirect_to action: :index
   end
 
