@@ -8,16 +8,17 @@ RSpec.describe IndexController, :type => :controller do
 
       get :index
 
-      expect(assigns(:visa).citizen).to eq 'GB'
+      expect(assigns(:search_form)[:citizen]).to eq 'GB'
     end
   end
 
   describe 'POST #search' do
     it 'returns new Visa object when citizen and country are the same' do
-      post :search, visa: { country: 'GB', citizen: 'GB' }
+      post :search, search_form: { country: 'GB', citizen: 'GB' }
 
-      expect(assigns(:visa).citizen).to eq 'GB'
-      expect(assigns(:searched)).to eq true
+      expect(assigns(:search_form)[:citizen]).to eq 'GB'
+      expect(assigns(:search_form)[:result]).to be_nil
+      expect(assigns(:search_form)[:searched]).to eq true
     end
 
     it 'returns new Visa object when citizen and country are the same' do
@@ -25,17 +26,17 @@ RSpec.describe IndexController, :type => :controller do
       source = FactoryGirl.build(:visa_source, country: 'GB', visas: [visa])
       source.save!
 
-      post :search, visa: { country: source.country, citizen: visa.citizen }
+      post :search, search_form: { country: source.country, citizen: visa.citizen }
 
-      expect(assigns(:visa)).to eq source
-      expect(assigns(:searched)).to eq true
+      expect(assigns(:search_form)[:result]).to eq source
+      expect(assigns(:search_form)[:searched]).to eq true
     end
 
     it 'returns nil when visa doesnt exist for given combination' do
-      post :search, visa: { country: 'CZ', citizen: 'GB' }
+      post :search, search_form: { country: 'CZ', citizen: 'GB' }
 
-      expect(assigns(:visa)).to be_nil
-      expect(assigns(:searched)).to eq true
+      expect(assigns(:search_form)[:result]).to be_nil
+      expect(assigns(:search_form)[:searched]).to eq true
     end
   end
 end

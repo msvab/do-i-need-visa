@@ -1,15 +1,18 @@
+require 'ostruct'
+
 class IndexController < ApplicationController
 
   layout 'public'
 
   def index
-    @visa = Visa.new(citizen: request_country(request.remote_ip))
+    @search_form = OpenStruct.new({ citizen: request_country(request.remote_ip), country: nil })
   end
 
   def search
-    @visa = find_visa(params[:visa])
+    @search_form = OpenStruct.new(params[:search_form])
+    @search_form[:searched] = true
+    @search_form[:result] = find_visa_source(@search_form)
 
-    @searched = true
     render :index
   end
 
@@ -22,11 +25,7 @@ class IndexController < ApplicationController
     country
   end
 
-  def find_visa(form)
-    if form[:citizen] == form[:country]
-      Visa.new(citizen: form[:citizen])
-    else
-      VisaSource.joins(:visas).where(country: form[:country], visas: {citizen: form[:citizen]}).first
-    end
+  def find_visa_source(form)
+    VisaSource.joins(:visas).where(country: form[:country], visas: {citizen: form[:citizen]}).first
   end
 end

@@ -1,31 +1,31 @@
 <h1>Do I need visa?</h1>
 <p class="lead">
     <%= form_tag '/', {method: 'post', class: 'form-inline'} do %>
-        I am from <%= country_select(:visa, :citizen, nil, {iso_codes: true},  {class: 'form-control'}) %>.
-        Do I need visa for <%= country_select(:visa, :country, nil, {iso_codes: true}, {class: 'form-control'}) %>
+        I am from <%= country_select(:search_form, :citizen, nil, {iso_codes: true},  {class: 'form-control'}) %>.
+        Do I need visa for <%= country_select(:search_form, :country, nil, {iso_codes: true}, {class: 'form-control'}) %>
         <%=	submit_tag '?', {class: 'btn btn-default'} %>
     <% end %>
 </p>
 
-<% if @searched %>
+<% if @search_form[:searched] %>
 <p class="lead">
-    <% if @visa.nil? %>
+    <% if @search_form[:citizen] == @search_form[:country] %>
+        No, you really do not need a visa for your own country!
+    <% elsif @search_form[:result].nil? %>
         Unfortunately we do not know.
 
         However your request has been logged and we'll try to update our records as soon as possible.
-    <% elsif @visa.citizen == @visa.country %>
-        No, you really do not need a visa for your own country!
-    <% elsif @visa.required? %>
+    <% elsif @search_form[:result].required? %>
         Unfortunately you do need a visa!
-        <% if @visa.on_arrival? %>
+        <% if @search_form[:result].on_arrival? %>
             But you can get it on arrival.
         <% end %>
     <% else %>
         Luckily you do not need visa!
     <% end %>
 
-    <% unless @visa.nil? || @visa.description.blank? %>
-        <% content_tag(:p, @visa.description) %>
+    <% unless @search_form[:result].nil? || @search_form[:result].description.blank? %>
+        <% content_tag(:p, @search_form[:result].description) %>
     <% end %>
 </p>
 <% end %>
