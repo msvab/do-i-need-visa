@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'Index', :type => :feature do
-  it 'mocks you, when you set same country in both dropdowns' do
+describe 'request: /', :type => :feature do
+  it 'mocks you, when you submit same country in both dropdowns' do
     visit '/'
 
     within('form') do
