@@ -18,14 +18,15 @@ class IndexController < ApplicationController
   def request_country(ip)
     geo = GeoIP.new('vendor/assets/geoip/GeoIP.dat')
     country = geo.country(ip).country_code2
-    country.downcase! unless country.nil?
+    country.upcase! unless country.nil?
+    country
   end
 
   def find_visa(form)
     if form[:citizen] == form[:country]
-      Visa.new(form)
+      Visa.new(citizen: form[:citizen])
     else
-      Visa.where(citizen: form[:citizen], country: form[:country]).take
+      VisaSource.joins(:visas).where(country: form[:country], visas: {citizen: form[:citizen]}).first
     end
   end
 end
