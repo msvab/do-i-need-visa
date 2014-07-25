@@ -28,7 +28,7 @@ RSpec.describe IndexController, :type => :controller do
 
       post :search, search_form: { country: source.country, citizen: visa.citizen }
 
-      expect(assigns(:search_form)[:result]).to eq source
+      expect(assigns(:search_form)[:result].country).to eq source.country
       expect(assigns(:search_form)[:searched]).to eq true
     end
 
