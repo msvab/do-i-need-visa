@@ -1,5 +1,5 @@
 class VisaSource < ActiveRecord::Base
-  has_many :visas, dependent: :delete_all
+  has_many :visas, dependent: :destroy
 
   validates :name, :country, :url, :description, presence: true
 
@@ -13,15 +13,17 @@ class VisaSource < ActiveRecord::Base
   end
 
   def visa_codes=(codes)
-    visas.where.not(citizen: codes).delete_all
-    codes_to_create = codes.select {|code|
-      found_visas = visas.select {|visa| visa.citizen == code}
-      found_visas.empty?
+    # delete all that are no longer in the codes collection
+    visas.each { |visa|
+      visas.destroy(visa) unless codes.include? visa.citizen
     }
-    codes_to_create.each { |code|
-      visas << Visa.new(citizen: code, visa_source: self)
+
+    codes.each { |code|
+      if visas.none? { |visa| visa.citizen == code }
+        visas << Visa.new(citizen: code, visa_source: self)
+      end
     }
-    save
+    save!
   end
 
   private

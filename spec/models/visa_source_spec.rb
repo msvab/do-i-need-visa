@@ -41,4 +41,30 @@ describe VisaSource do
     expect(FactoryGirl.build(:visa_source, country: 'a')).to_not be_valid
     expect(FactoryGirl.build(:visa_source, country: 'aaa')).to_not be_valid
   end
+
+  it 'returns codes of all countries this visa source applies to' do
+    gb = FactoryGirl.build(:visa, citizen: 'GB')
+    cz = FactoryGirl.build(:visa, citizen: 'CZ')
+    source = FactoryGirl.build(:visa_source, visas: [gb, cz])
+
+    expect(source.visa_codes).to contain_exactly(gb.citizen, cz.citizen)
+  end
+
+  it 'creates new visas for new country codes' do
+    source = FactoryGirl.build(:visa_source, visas: [])
+
+    source.visa_codes = ['GB']
+
+    expect(source.visa_codes).to contain_exactly 'GB'
+  end
+
+  it 'deletes visas that are not present in the new country codes during assignment' do
+    gb = FactoryGirl.build(:visa, citizen: 'GB')
+    cz = FactoryGirl.build(:visa, citizen: 'CZ')
+    source = FactoryGirl.build(:visa_source, visas: [gb, cz])
+
+    source.visa_codes = ['CZ']
+
+    expect(source.visa_codes).to contain_exactly cz.citizen
+  end
 end
