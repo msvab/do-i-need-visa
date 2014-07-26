@@ -1,19 +1,17 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-def random_bool
-  [true, false].sample
-end
+require 'random_generator'
 
 FactoryGirl.define do
   factory :visa_source do
     name Faker::Hacker.noun
-    country 'US'
+    country RandomGenerator.country
     url Faker::Internet.url
     description Faker::Hacker.say_something_smart
-    visa_required random_bool
-    on_arrival random_bool
+    visa_required RandomGenerator.bool
+    on_arrival RandomGenerator.bool
 
-    if random_bool
+    if RandomGenerator.bool
       etag Faker::Number.digit
     else
       last_modified Time.now
