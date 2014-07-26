@@ -15,7 +15,7 @@
         Unfortunately we do not know.
 
         However your request has been logged and we'll try to update our records as soon as possible.
-    <% elsif @search_form[:result].required? %>
+    <% elsif @search_form[:result].visa_required? %>
         Unfortunately you do need a visa!
         <% if @search_form[:result].on_arrival? %>
             But you can get it on arrival.

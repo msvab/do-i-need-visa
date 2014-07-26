@@ -23,8 +23,7 @@ RSpec.describe IndexController, :type => :controller do
 
     it 'returns new Visa object when citizen and country are the same' do
       visa = FactoryGirl.build(:visa, citizen: 'CZ')
-      source = FactoryGirl.build(:visa_source, country: 'GB', visas: [visa])
-      source.save!
+      source = FactoryGirl.create(:visa_source, country: 'GB', visas: [visa])
 
       post :search, search_form: { country: source.country, citizen: visa.citizen }
 

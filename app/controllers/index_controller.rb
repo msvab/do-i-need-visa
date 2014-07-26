@@ -26,6 +26,6 @@ class IndexController < ApplicationController
   end
 
   def find_visa_source(form)
-    VisaSource.joins(:visas).where(country: form[:country], visas: {citizen: form[:citizen]}).first
+    VisaSource.joins(:visas).where(country: form[:country].upcase, visas: {citizen: form[:citizen].upcase}).first
   end
 end
