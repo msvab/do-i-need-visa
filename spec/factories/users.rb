@@ -3,7 +3,8 @@
 require_relative '../random_generator'
 
 FactoryGirl.define do
-  factory :visa do
-    citizen RandomGenerator.country
+  factory :user do
+    email Faker::Internet.email
+    password 'Password1!'
   end
 end

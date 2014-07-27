@@ -1,6 +1,6 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
-require 'random_generator'
+require_relative '../random_generator'
 
 FactoryGirl.define do
   factory :visa_source do

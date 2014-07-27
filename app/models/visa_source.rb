@@ -26,6 +26,10 @@ class VisaSource < ActiveRecord::Base
     save!
   end
 
+  def ==(comparison_object)
+    attributes == comparison_object.attributes
+  end
+
   private
 
   def etag_or_date_presence
