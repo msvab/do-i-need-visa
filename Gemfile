@@ -5,6 +5,7 @@ ruby '2.1.2'
 gem 'rails', '4.1.4'
 gem 'rack-ssl', '1.4.1'
 gem 'clearance', '1.4.0'
+gem 'unicorn', '4.8.3'
 
 gem 'pg', '0.17.1'
 gem 'seed_dump', '3.1.0'
