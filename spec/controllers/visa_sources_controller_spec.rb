@@ -54,6 +54,18 @@ RSpec.describe VisaSourcesController, :type => :controller do
       expect(response).to redirect_to action: :index
     end
 
+    it 'creates visa sources with countries it applies to' do
+      visa_codes = ['US', 'GB']
+      visa_source = FactoryGirl.attributes_for(:visa_source, visa_codes: visa_codes)
+
+      sign_in
+      post :create, visa_source: visa_source
+
+      expect(VisaSource.count).to be 1
+      expect(VisaSource.all.first.country).to eq visa_source[:country]
+      expect(VisaSource.all.first.visa_codes).to contain_exactly *visa_codes
+    end
+
     it 'displays validation errors upon submitting invalid VisaSource' do
       visa_source = FactoryGirl.attributes_for(:visa_source, country: 'rubbish')
 

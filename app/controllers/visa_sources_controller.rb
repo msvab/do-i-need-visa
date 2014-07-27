@@ -22,6 +22,7 @@ class VisaSourcesController < ApplicationController
       flash[:errors] = @visa_source.errors.messages
       render :new
     else
+      update_visa_codes(@visa_source, params)
       redirect_to action: :index
     end
   end
@@ -33,7 +34,7 @@ class VisaSourcesController < ApplicationController
       flash[:errors] = @visa_source.errors.messages
       render :edit
     else
-      @visa_source.visa_codes = params['visa_source']['visa_codes'].select {|code| !code.blank?}
+      update_visa_codes(@visa_source, params)
       redirect_to action: :index
     end
   end
@@ -48,5 +49,10 @@ class VisaSourcesController < ApplicationController
 
   def source_params
     params.require(:visa_source).permit(:name, :country, :url, :last_modified, :etag, :visa_required, :on_arrival, :description)
+  end
+
+  def update_visa_codes(visa_source, params)
+    submitted_country_codes = params['visa_source']['visa_codes']
+    visa_source.visa_codes = submitted_country_codes.select { |code| !code.blank? } unless submitted_country_codes.nil?
   end
 end
