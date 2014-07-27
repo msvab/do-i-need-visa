@@ -128,4 +128,32 @@ RSpec.describe VisaSourcesController, :type => :controller do
       expect(flash[:errors]).to include :country
     end
   end
+
+  describe 'GET #destroy' do
+    it 'requires sign-in' do
+      get :destroy, id: 1
+
+      expect(response).to redirect_to :sign_in
+    end
+
+    it 'deletes given VisaSource' do
+      visa_source = FactoryGirl.create(:visa_source)
+
+      sign_in
+      get :destroy, id: visa_source.id
+
+      expect(VisaSource.count).to eq 0
+      expect(response).to redirect_to action: :index
+    end
+
+    it 'doesnt delete VisaSource that has at least one country associated with it' do
+      visa_source = FactoryGirl.create(:visa_source, visas: [ FactoryGirl.build(:visa) ])
+
+      sign_in
+      get :destroy, id: visa_source.id
+
+      expect(VisaSource.count).to eq 1
+      expect(response).to redirect_to action: :index
+    end
+  end
 end
