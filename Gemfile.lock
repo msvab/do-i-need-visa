@@ -29,7 +29,7 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
-    bootstrap-sass (3.2.0.0)
+    bootstrap-sass (3.2.0.1)
       sass (~> 3.2)
     builder (3.2.2)
     capybara (2.4.1)
@@ -128,9 +128,9 @@ GEM
       sass (~> 3.2.0)
       sprockets (~> 2.8, <= 2.11.0)
       sprockets-rails (~> 2.0)
-    seed_dump (3.1.0)
-      activerecord
-      activesupport
+    seed_dump (3.2.0)
+      activerecord (~> 4)
+      activesupport (~> 4)
     sprockets (2.11.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -162,7 +162,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (= 3.2.0.0)
+  bootstrap-sass (= 3.2.0.1)
   capybara (= 2.4.1)
   clearance (= 1.4.0)
   countries (= 0.9.3)
@@ -178,6 +178,6 @@ DEPENDENCIES
   rails_12factor (= 0.0.2)
   rspec-rails (= 3.0.2)
   sass-rails (= 4.0.3)
-  seed_dump (= 3.1.0)
+  seed_dump (= 3.2.0)
   uglifier (= 2.5.3)
   unicorn (= 4.8.3)
