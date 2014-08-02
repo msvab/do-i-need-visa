@@ -7,6 +7,7 @@ Visa.create!([
   {citizen: "AT", visa_source_id: 1},
   {citizen: "BE", visa_source_id: 1},
   {citizen: "BN", visa_source_id: 1},
+  {citizen: "CL", visa_source_id: 1},
   {citizen: "CZ", visa_source_id: 1},
   {citizen: "DK", visa_source_id: 1},
   {citizen: "EE", visa_source_id: 1},
@@ -41,5 +42,5 @@ Visa.create!([
   {citizen: "GB", visa_source_id: 1}
 ])
 VisaSource.create!([
-  {name: "USA Visa Waiver Program (ETSA)", country: "US", url: "http://travel.state.gov/content/visas/english/visit/visa-waiver-program.html", last_modified: nil, etag: "13f418-14af5-4f5329f119766", updated: false, visa_required: true, on_arrival: false, description: "As you're national of a Visa Waiver Program participant country, you might not need a visa to visit the United States for stays of up to 90 days. However, you must have an authorisation under the Electronic System for Travel Authorization (ESTA) prior to boarding any US-bound ship or aircraft.<br/>You can apply for it <a href=\"http://www.cbp.gov/travel/international-visitors/esta\" title=\"ESTA application site\">here</a>."}
+  {name: "USA Visa Waiver Program (ETSA)", country: "US", url: "http://travel.state.gov/content/visas/english/visit/visa-waiver-program.html", last_modified: nil, etag: "15f725-14ed4-4ffa5373a3c45", updated: false, visa_required: true, on_arrival: false, description: "As you're national of a Visa Waiver Program participant country, you might not need a visa to visit the United States for stays of up to 90 days. However, you must have an authorisation under the Electronic System for Travel Authorization (ESTA) prior to boarding any US-bound ship or aircraft.<br/>You can apply for it <a href=\"http://www.cbp.gov/travel/international-visitors/esta\" title=\"ESTA application site\">here</a>."}
 ])
