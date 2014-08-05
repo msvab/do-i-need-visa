@@ -9,6 +9,7 @@ gem 'unicorn', '4.8.3'
 
 gem 'pg', '0.17.1'
 gem 'seed_dump', '3.2.0'
+gem 'squeel', '1.2.1'
 
 gem 'sass-rails', '4.0.3'
 gem 'bootstrap-sass', '3.2.0.1'
@@ -22,6 +23,11 @@ gem 'jquery-rails', '3.1.1'
 
 group :production do
   gem 'rails_12factor', '0.0.2'
+end
+
+group :development do
+  gem 'better_errors', '1.1.0'
+  gem 'binding_of_caller', '0.7.2'
 end
 
 group :development, :test do
