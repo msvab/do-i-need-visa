@@ -4,3 +4,6 @@
 .generators
 .rakeTasks
 tmp
+out
+.bundle
+**/.DS_Store
