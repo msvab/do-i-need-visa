@@ -39,4 +39,5 @@ end
 group :test do
   gem 'capybara', '2.4.1'
   gem 'database_cleaner', '1.3.0'
+  gem 'webmock', '1.18.0'
 end
