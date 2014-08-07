@@ -11,8 +11,9 @@ gem 'pg', '0.17.1'
 gem 'seed_dump', '3.2.0'
 gem 'squeel', '1.2.1'
 
+gem 'sass-rails', '4.0.3'
+gem 'bootstrap-sass', '3.2.0.1'
 gem 'uglifier', '2.5.3'
-gem 'foundation-rails', '5.3.3.0'
 
 gem 'countries', '0.9.3'
 gem 'country_select', '1.3.1'

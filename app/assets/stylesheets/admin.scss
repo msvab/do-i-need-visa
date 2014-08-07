@@ -1,4 +1,6 @@
-@import "foundation_and_overrides";
+@import "bootstrap";
+@import "bootstrap/theme";
+@import "bootstrap-chosen";
 
 .hidden {
   display: none;

@@ -12,9 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
 //= require chosen.jquery
 
 $(function() {
-    $(document).foundation();
     $('.chosen-select').chosen();
 });
