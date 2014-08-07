@@ -6,10 +6,6 @@
   display: none;
 }
 
-.narrow {
-  max-width: 800px;
-}
-
 .pt {
   padding-top: 1em;
 }
@@ -25,4 +21,15 @@ td {
 .chosen-container-multi .chosen-choices,
 .chosen-container-single .chosen-single {
   border-radius: 4px;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+
+  h2,
+  input[type="password"] {
+    margin-bottom: 10px;
+  }
 }
