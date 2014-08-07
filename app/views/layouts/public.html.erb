@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Do I Need Visa?</title>
+    <title><%= content_for?(:title) ? yield(:title) : "Do I Need Visa?" %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag 'public', media: 'all' %>
-    <%= javascript_include_tag 'public' %>
+    <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
 </head>
 <body>
@@ -12,6 +12,8 @@
 <div class="container">
     <%= yield %>
 </div>
+
+<%= javascript_include_tag 'public' %>
 
 </body>
 </html>

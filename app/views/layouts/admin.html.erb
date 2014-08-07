@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Visa Source Management</title>
+    <title><%= content_for?(:title) ? yield(:title) : "Visa Source Management" %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= stylesheet_link_tag 'admin', media: 'all' %>
-    <%= javascript_include_tag 'admin' %>
+    <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
 </head>
 <body>
@@ -12,6 +12,8 @@
 <div class="container">
     <%= yield %>
 </div>
+
+<%= javascript_include_tag 'admin' %>
 
 </body>
 </html>
