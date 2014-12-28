@@ -19,3 +19,6 @@ psql postgres -c "ALTER ROLE visatest WITH CREATEDB;"
 
 # create schema
 rake db:create:all
+
+# update schema
+rake db:migrate

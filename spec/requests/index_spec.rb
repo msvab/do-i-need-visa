@@ -2,8 +2,8 @@ require 'rails_helper'
 
 def select_countries(citizen, country)
   within('form') do
-    find('#search_form_citizen').find("option[value=#{citizen.downcase}]").select_option
-    find('#search_form_country').find("option[value=#{country.downcase}]").select_option
+    find('#search_form_citizen').find("option[value=#{citizen.upcase}]").select_option
+    find('#search_form_country').find("option[value=#{country.upcase}]").select_option
   end
 end
 
