@@ -55,7 +55,7 @@ RSpec.describe VisaSourcesController, :type => :controller do
     end
 
     it 'creates visa sources with countries it applies to' do
-      visa_codes = ['US', 'GB']
+      visa_codes = %w(US GB)
       visa_source = FactoryGirl.attributes_for(:visa_source, visa_codes: visa_codes)
 
       sign_in
@@ -101,8 +101,8 @@ RSpec.describe VisaSourcesController, :type => :controller do
     end
 
     it 'updates countries for which the visa sources applies' do
-      visa_codes = ['US', 'GB']
-      visa_source = FactoryGirl.create(:visa_source, visa_codes: ['GB', 'CZ'])
+      visa_codes = %w(US GB)
+      visa_source = FactoryGirl.create(:visa_source, visa_codes: %w(GB CZ))
       updated_source = visa_source.attributes.merge({description: 'Hello!', visa_codes: visa_codes})
 
       sign_in

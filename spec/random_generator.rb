@@ -5,7 +5,7 @@ module RandomGenerator
   end
 
   def RandomGenerator.country
-    ['US', 'CZ', 'AU', 'DE'].sample
+    %w(US CZ AU DE).sample
   end
 
 end
