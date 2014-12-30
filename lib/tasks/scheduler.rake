@@ -38,11 +38,11 @@ namespace :scheduler do
       execute_request(uri, req, source)
     }
 
-    sources_to_check = VisaSource.where { (!updated) & (etag != nil) }
+    sources_to_check = VisaSource.where { (updated == false) & (etag != nil) }
     Rails.logger.info "Found #{sources_to_check.length} sources to check by ETag"
     sources_to_check.each &check_source_by_etag
 
-    sources_to_check = VisaSource.where { (!updated) & (last_modified != nil) }
+    sources_to_check = VisaSource.where { (updated == false) & (last_modified != nil) }
     Rails.logger.info "Found #{sources_to_check.length} sources to check by Last Modified"
     sources_to_check.each &check_source_by_last_modified
 
