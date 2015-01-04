@@ -7,19 +7,19 @@ gem 'rack-ssl', '1.4.1'
 gem 'clearance', '1.6.0'
 gem 'unicorn', '4.8.3'
 
-gem 'pg', '0.17.1'
+gem 'pg', '0.18.0'
 gem 'seed_dump', '3.2.1'
 gem 'squeel', github: 'danielrhodes/squeel'
 
 gem 'sass-rails', '5.0.1'
 gem 'bootstrap-sass', '3.3.1.0'
-gem 'uglifier', '2.6.0'
+gem 'uglifier', '2.6.1'
 
 gem 'countries', '0.9.3'
 gem 'country_select', '2.1.0'
 gem 'geoip', '1.4.0'
 
-gem 'jquery-rails', '4.0.2'
+gem 'jquery-rails', '4.0.3'
 
 group :production do
   gem 'rails_12factor', '0.0.3'
@@ -38,6 +38,6 @@ end
 
 group :test do
   gem 'capybara', '2.4.4'
-  gem 'database_cleaner', '1.3.0'
+  gem 'database_cleaner', '1.4.0'
   gem 'webmock', '1.20.4'
 end
