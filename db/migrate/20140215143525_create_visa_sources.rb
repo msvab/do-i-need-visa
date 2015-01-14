@@ -11,7 +11,7 @@ class CreateVisaSources < ActiveRecord::Migration
       t.boolean :on_arrival, null: false, default: false
       t.text :description, null: false
 
-      t.timestamps
+      t.timestamps null: true
     end
   end
 end

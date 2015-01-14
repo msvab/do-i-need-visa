@@ -4,7 +4,7 @@ class CreateVisas < ActiveRecord::Migration
       t.string :citizen, null: false, limit: 2
       t.belongs_to :visa_source, index: true
 
-      t.timestamps
+      t.timestamps null: true
     end
   end
 end

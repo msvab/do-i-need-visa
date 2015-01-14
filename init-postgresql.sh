@@ -3,6 +3,8 @@
 # delete DB and users if exists
 dropdb visa
 dropdb visatest
+dropuser visa
+dropuser visatest
 
 # create new DB and users
 createdb visa
@@ -19,6 +21,8 @@ psql postgres -c "ALTER ROLE visatest WITH CREATEDB;"
 
 # create schema
 rake db:create:all
+rake db:create:all RAILS_ENV=test
 
 # update schema
 rake db:migrate
+rake db:migrate RAILS_ENV=test
