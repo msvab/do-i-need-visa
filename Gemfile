@@ -4,7 +4,7 @@ ruby '2.2.0'
 
 gem 'rails', '4.2.0'
 gem 'rack-ssl', '1.4.1'
-gem 'clearance', '1.7.0'
+gem 'clearance', '1.8.0'
 gem 'unicorn', '4.8.3'
 
 gem 'pg', '0.18.1'
@@ -12,10 +12,10 @@ gem 'seed_dump', '3.2.1'
 gem 'squeel', github: 'danielrhodes/squeel'
 
 gem 'sass-rails', '5.0.1'
-gem 'bootstrap-sass', '3.3.1.0'
+gem 'bootstrap-sass', '3.3.3'
 gem 'uglifier', '2.7.0'
 
-gem 'countries', '0.9.3'
+gem 'countries', '0.10.0'
 gem 'country_select', '2.1.0'
 gem 'geoip', '1.4.0'
 
