@@ -26,3 +26,4 @@ rake db:create:all
 
 # update schema
 rake db:migrate
+rake db:seed
