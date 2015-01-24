@@ -1,4 +1,3 @@
-require 'ostruct'
 
 class IndexController < ApplicationController
 
