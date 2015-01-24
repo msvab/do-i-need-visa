@@ -18,11 +18,11 @@ psql postgres -c "GRANT ALL PRIVILEGES ON DATABASE visa to visa;"
 psql postgres -c "GRANT ALL PRIVILEGES ON DATABASE visatest to visatest;"
 psql postgres -c "ALTER ROLE visa WITH CREATEDB;"
 psql postgres -c "ALTER ROLE visatest WITH CREATEDB;"
+psql postgres -c "ALTER DATABASE visa OWNER TO visa;"
+psql postgres -c "ALTER DATABASE visatest OWNER TO visatest;"
 
 # create schema
 rake db:create:all
-rake db:create:all RAILS_ENV=test
 
 # update schema
 rake db:migrate
-rake db:migrate RAILS_ENV=test

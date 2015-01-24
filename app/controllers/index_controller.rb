@@ -5,13 +5,13 @@ class IndexController < ApplicationController
   layout 'public'
 
   def index
-    @search_form = OpenStruct.new({ citizen: request_country(request.remote_ip), country: nil })
+    @search_form = SearchForm.new(request_country(request.remote_ip), nil)
   end
 
   def search
-    @search_form = OpenStruct.new(params[:search_form])
-    @search_form[:searched] = true
-    @search_form[:result] = find_visa_source(@search_form)
+    @search_form = SearchForm.new(params[:search_form][:citizen], params[:search_form][:country])
+    @search_form.searched = true
+    @search_form.result = find_visa_source(@search_form)
 
     render :index
   end
@@ -26,6 +26,6 @@ class IndexController < ApplicationController
   end
 
   def find_visa_source(form)
-    VisaSource.joins(:visas).where(country: form[:country].upcase, visas: {citizen: form[:citizen].upcase}).first
+    VisaSource.joins(:visas).where(country: form.country, visas: {citizen: form.citizen}).first
   end
 end

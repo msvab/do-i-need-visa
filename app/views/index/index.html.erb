@@ -7,25 +7,25 @@
     <% end %>
 </p>
 
-<% if @search_form[:searched] %>
+<% if @search_form.searched %>
 <p class="lead">
-    <% if @search_form[:citizen] == @search_form[:country] %>
+    <% if @search_form.citizen == @search_form.country %>
         No, you really do not need a visa for your own country!
-    <% elsif @search_form[:result].nil? %>
+    <% elsif @search_form.result.nil? %>
         Unfortunately we do not know.
 
         However your request has been logged and we'll try to update our records as soon as possible.
-    <% elsif @search_form[:result].visa_required? %>
+    <% elsif @search_form.result.visa_required? %>
         Unfortunately you do need a visa!
-        <% if @search_form[:result].on_arrival? %>
+        <% if @search_form.result.on_arrival? %>
             But you can get it on arrival.
         <% end %>
     <% else %>
         Luckily you do not need visa!
     <% end %>
 
-    <% unless @search_form[:result].nil? || @search_form[:result].description.blank? %>
-        <% content_tag(:p, @search_form[:result].description) %>
+    <% unless @search_form.result.nil? || @search_form.result.description.blank? %>
+        <% content_tag(:p, @search_form.result.description) %>
     <% end %>
 </p>
 <% end %>
