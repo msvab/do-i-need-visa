@@ -7,7 +7,7 @@ def select_countries(citizen, country)
   end
 end
 
-describe 'request: /', :type => :feature do
+describe 'request: /', type: :feature do
   it 'mocks you, when you submit same country in both dropdowns' do
     visit '/'
 

@@ -1,4 +1,4 @@
-<%= form_for :session, url: '/sessions/form', html: {role: 'form', class: 'form-signin'} do |form| %>
+<%= form_for :session, url: '/session', html: {role: 'form', class: 'form-signin'} do |form| %>
     <h2>Sign in</h2>
 
     <%= form.text_field :email, type: 'email', class: 'form-control', placeholder: 'Email address', required: true, autofocus: true %>

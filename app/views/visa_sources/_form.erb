@@ -1,36 +1,36 @@
 <div class="form-group <%= raw('has-error has-feedback') unless src.errors[:name].empty? %>">
-    <label class="col-md-3 control-label">Name</label>
+    <%=	form.label :name, 'Name', {class: 'col-md-3 control-label'} %>
 
     <div class="col-md-8 controls">
         <%= form.text_field :name, {class: 'form-control'} %>
     </div>
 </div>
 <div class="form-group <%= raw('has-error has-feedback') unless src.errors[:country].empty? %>">
-    <label class="col-md-3 control-label">Country</label>
+    <%=	form.label :country, 'Country', {class: 'col-md-3 control-label'} %>
 
     <div class="col-md-8 controls">
         <%= form.country_select :country, nil, {iso_codes: true}, {class: 'chosen-select'} %>
     </div>
 </div>
 <div class="form-group <%= raw('has-error has-feedback') unless src.errors[:url].empty? %>">
-    <label class="col-md-3 control-label">URL</label>
+    <%=	form.label :url, 'URL', {class: 'col-md-3 control-label'} %>
 
     <div class="col-md-8 controls">
         <%= form.url_field :url, {class: 'form-control'} %>
     </div>
 </div>
-<div class="form-group <%= raw('has-error has-feedback') unless src.errors[:last_modified].empty? %>">
-    <label class="col-md-3 control-label">Last Modified</label>
+<div class="form-group <%= raw('has-error has-feedback') unless src.errors[:selector].empty? %>">
+    <%=	form.label :selector, 'CSS Selector', {class: 'col-md-3 control-label'} %>
 
     <div class="col-md-8 controls">
-        <%= form.datetime_local_field :last_modified, {class: 'form-control'} %>
+        <%= form.text_field :selector, {class: 'form-control'} %>
     </div>
 </div>
-<div class="form-group <%= raw('has-error has-feedback') unless src.errors[:etag].empty? %>">
-    <label class="col-md-3 control-label">Etag</label>
+<div class="form-group <%= raw('has-error has-feedback') unless src.errors[:page_hash].empty? %>">
+    <%=	form.label :page_hash, 'Page Hash', {class: 'col-md-3 control-label'} %>
 
     <div class="col-md-8 controls">
-        <%= form.text_field :etag, {class: 'form-control'} %>
+        <%= form.text_field :page_hash, {class: 'form-control'} %>
     </div>
 </div>
 <div class="form-group <%= raw('has-error has-feedback') unless src.errors[:visa_required].empty? %>">
