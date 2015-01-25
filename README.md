@@ -13,6 +13,7 @@ Technologies used:
 * SASS
 * Bootstrap
 
+
 * RSpec
 * Capybara
 * WebMock
