@@ -3,10 +3,8 @@ class VisaSource < ActiveRecord::Base
 
   validates :name, :country, :url, :description, presence: true
 
-  validates :name, :url, :etag, length: { maximum: 255 }
+  validates :name, :url, length: { maximum: 255 }
   validates :country, length: { is: 2 }
-
-  validate :etag_or_date_presence
 
   def visa_codes
     visas.collect { |visa| visa.citizen }
@@ -28,11 +26,5 @@ class VisaSource < ActiveRecord::Base
 
   def ==(comparison_object)
     attributes == comparison_object.attributes
-  end
-
-  private
-
-  def etag_or_date_presence
-    errors.add(:base, 'Etag or last modified date must be set.') if etag.blank? && last_modified.blank?
   end
 end

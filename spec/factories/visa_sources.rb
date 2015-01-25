@@ -1,5 +1,6 @@
 # Read about factories at https://github.com/thoughtbot/factory_girl
 
+require 'securerandom'
 require_relative '../random_generator'
 
 FactoryGirl.define do
@@ -10,11 +11,6 @@ FactoryGirl.define do
     description Faker::Hacker.say_something_smart
     visa_required RandomGenerator.bool
     on_arrival RandomGenerator.bool
-
-    if RandomGenerator.bool
-      etag Faker::Number.digit
-    else
-      last_modified Time.now
-    end
+    page_hash SecureRandom.hex(16)
   end
 end

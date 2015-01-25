@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140317000027) do
+ActiveRecord::Schema.define(version: 20150125101422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,17 +29,17 @@ ActiveRecord::Schema.define(version: 20140317000027) do
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
   create_table "visa_sources", force: :cascade do |t|
-    t.string   "name",                                    null: false
-    t.string   "country",       limit: 2,                 null: false
-    t.string   "url",                                     null: false
-    t.datetime "last_modified"
-    t.string   "etag"
-    t.boolean  "updated",                 default: false, null: false
-    t.boolean  "visa_required",           default: true,  null: false
-    t.boolean  "on_arrival",              default: false, null: false
-    t.text     "description",                             null: false
+    t.string   "name",                                      null: false
+    t.string   "country",       limit: 2,                   null: false
+    t.string   "url",                                       null: false
+    t.boolean  "updated",                   default: false, null: false
+    t.boolean  "visa_required",             default: true,  null: false
+    t.boolean  "on_arrival",                default: false, null: false
+    t.text     "description",                               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "page_hash",     limit: 32
+    t.string   "selector",      limit: 200
   end
 
   create_table "visas", force: :cascade do |t|

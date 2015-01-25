@@ -1,4 +1,5 @@
-require 'net/http'
+require 'nokogiri'
+require_relative 'page_hash'
 
 namespace :scheduler do
 
@@ -6,47 +7,31 @@ namespace :scheduler do
   task check_source_updates: :environment do
     Rails.logger.info 'Started checking for source updates'
 
-    def execute_request(uri, request, source)
-      response = Net::HTTP.start(uri.host, uri.port) { |http|
-        http.request(request)
-      }
-
-      if response.code == '304'
-        Rails.logger.info "Source not modified: #{source.url}"
-      elsif response.code == '200'
-        source.updated = true
-        source.save!
-        Rails.logger.info "Source modified: #{source.url}"
-      else
-        Rails.logger.info "Unexpected response code #{response.code} from #{source.url}"
+    execute_request = lambda { |source|
+      begin
+        current_hash = PageHash.calculate(source.url, source.selector)
+        if current_hash != source.page_hash
+          source.updated = true
+          source.save!
+          Rails.logger.info "Source modified: #{source.url}"
+        else
+          Rails.logger.info "Source not modified: #{source.url}"
+        end
+      rescue Exception => e
+        Rails.logger.warn "Unexpected error while checking #{source.url} for updates: #{e.message}"
       end
-    end
-
-    check_source_by_etag = lambda { |source|
-      uri = URI(source.url)
-      req = Net::HTTP::Get.new(uri)
-      req['If-None-Match'] = source.etag
-
-      execute_request(uri, req, source)
     }
 
-    check_source_by_last_modified = lambda { |source|
-      uri = URI(source.url)
-      req = Net::HTTP::Get.new(uri)
-      req['If-Modified-Since'] = source.last_modified.httpdate
-
-      execute_request(uri, req, source)
-    }
-
-    sources_to_check = VisaSource.where { (updated == false) & (etag != nil) }
-    Rails.logger.info "Found #{sources_to_check.length} sources to check by ETag"
-    sources_to_check.each &check_source_by_etag
-
-    sources_to_check = VisaSource.where { (updated == false) & (last_modified != nil) }
-    Rails.logger.info "Found #{sources_to_check.length} sources to check by Last Modified"
-    sources_to_check.each &check_source_by_last_modified
+    VisaSource.where { !updated && !page_hash.nil? }.each &execute_request
 
     Rails.logger.info 'Finished checking for source updates'
   end
 
+  task :print_page_hash, [:url, :selector] => :environment do |t, args|
+    begin
+      puts PageHash.calculate(args[:url], args[:selector])
+    rescue Exception => e
+      puts e.message
+    end
+  end
 end
