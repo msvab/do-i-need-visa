@@ -48,7 +48,7 @@ class VisaSourcesController < ApplicationController
   private
 
   def source_params
-    params.require(:visa_source).permit(:name, :country, :url, :last_modified, :etag, :visa_required, :on_arrival, :description)
+    params.require(:visa_source).permit(:name, :country, :url, :selector, :page_hash, :visa_required, :on_arrival, :description)
   end
 
   def update_visa_codes(visa_source, params)
