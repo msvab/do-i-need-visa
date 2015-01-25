@@ -21,20 +21,12 @@ describe VisaSource do
     expect(FactoryGirl.build(:visa_source, description: nil)).to_not be_valid
   end
 
-  it 'is invalid without an etag and last_modified' do
-    expect(FactoryGirl.build(:visa_source, etag: nil, last_modified: nil)).to_not be_valid
-  end
-
   it 'is invalid with a name longer than 255 characters' do
     expect(FactoryGirl.build(:visa_source, name: 'a' * 256 )).to_not be_valid
   end
 
   it 'is invalid with an url longer than 255 characters' do
     expect(FactoryGirl.build(:visa_source, url: 'a' * 256 )).to_not be_valid
-  end
-
-  it 'is invalid with an etag longer than 255 characters' do
-    expect(FactoryGirl.build(:visa_source, etag: 'a' * 256 )).to_not be_valid
   end
 
   it 'is invalid with a country length other than 2' do
