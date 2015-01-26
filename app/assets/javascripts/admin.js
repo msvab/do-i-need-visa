@@ -15,6 +15,24 @@
 //= require bootstrap
 //= require chosen.jquery
 
-$(function() {
-    $('.chosen-select').chosen();
-});
+(function($) {
+
+    $(function() {
+        $('.chosen-select').chosen();
+
+        $('#current-hash').click(function(event) {
+            var output = $(event.target).next();
+            var url = $('#visa_source_url').val().trim();
+            var selector = $('#visa_source_selector').val().trim();
+            if (url === '' || selector === '') {
+                output.text('URL and CSS Selector have to be specified!');
+            } else {
+                $.ajax('/admin/page_hash', {data: {url: url, selector: selector}, dataType: 'json', cache: false})
+                    .done(function(data) {
+                        output.text(data.page_hash);
+                    });
+            }
+        });
+    });
+
+})(jQuery);
