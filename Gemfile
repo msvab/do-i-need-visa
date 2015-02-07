@@ -15,8 +15,7 @@ gem 'sass-rails', '5.0.1'
 gem 'bootstrap-sass', '3.3.3'
 gem 'uglifier', '2.7.0'
 
-gem 'countries', '0.10.0'
-gem 'country_select', '2.1.0'
+gem 'country_select', '2.1.1'
 gem 'geoip', '1.4.0'
 
 gem 'jquery-rails', '4.0.3'
