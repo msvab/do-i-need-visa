@@ -9,7 +9,7 @@ gem 'unicorn', '4.8.3'
 
 gem 'pg', '0.18.1'
 gem 'seed_dump', '3.2.2'
-gem 'squeel', github: 'danielrhodes/squeel'
+gem 'squeel', '1.2.3'
 
 gem 'sass-rails', '5.0.1'
 gem 'bootstrap-sass', '3.3.3'
