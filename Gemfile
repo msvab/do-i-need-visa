@@ -12,7 +12,7 @@ gem 'seed_dump', '3.2.2'
 gem 'squeel', '1.2.3'
 
 gem 'sass-rails', '5.0.1'
-gem 'bootstrap-sass', '3.3.4.1'
+gem 'bootstrap-sass', '3.4.1'
 gem 'uglifier', '2.7.1'
 
 gem 'country_select', '2.2.0'
